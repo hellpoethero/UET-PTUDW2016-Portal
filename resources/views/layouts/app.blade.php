@@ -148,6 +148,7 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu animation-dock">
+                            <li><a href="{{ url('/user/'.Auth::user()['id']) }}"><i class="fa fa-btn fa-user"></i> Trang cá nhân</a></li>
                             <li><a href="{{ url('/setting') }}"><i class="fa fa-btn fa-cog"></i> Cài đặt</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-fw fa-power-off text-danger"></i> Đăng xuất</a></li>

@@ -9,46 +9,37 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/setting/change_avatar') }}" enctype="multipart/form-data">
                             {!! csrf_field() !!}
-
-                            <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+                            <div class="form-group">
                                 <label class="col-md-4 control-label">Ảnh đại diện</label>
                                 <div class="col-md-6">
-                                    <img src="{{asset('upload/avatar/'.$user['avatar'])}}" width="100%">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <input class="form-control" id="uploadFile" placeholder="Chọn ảnh đại diện" disabled/>
-
-                                    @if ($errors->has('avatar'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('avatar') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
                                     <label class="btn btn-default">
                                         <i class="fa fa-folder-open"></i>
                                         <input name="avatar" id="uploadBtn" type="file" style="display: none"/>
                                     </label>
-                                    <button id="submit" type="submit" class="btn btn-primary col-md-offset-1">
-                                        <i class="fa fa-upload"></i> Upload
+                                    <button id="submit" type="submit" class="btn btn-primary">
+                                        <i class="fa fa-upload"></i> Tải lên
                                     </button>
                                 </div>
                             </div>
                         </form>
+
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/setting/delete_avatar') }}">
                             {!! csrf_field() !!}
                             {!! method_field('DELETE') !!}
-
                             <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                <div class="col-md-4 control-label">
+                                    <button type="submit" class="btn btn-danger">
                                         Xóa ảnh
                                     </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="width: 140px;">
+                                        @if ($user['avatar']=='' || $user['avatar']==null)
+                                            <img class="" src="{{asset('img/avatar1.jpg')}}">
+                                        @else
+                                            <img class="" src="{{asset('upload/avatar/'.$user['avatar'])}}" width="100%">
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </form>
